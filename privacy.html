@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Chess Shield</title>
+<meta name="theme-color" content="#F0EDE3" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="brand">
+  <a href="/" class="brandmark">
+    <span class="knight">♞</span>
+    <span class="wordmark">Chess Shield<sup>®</sup></span>
+  </a>
+  <a href="/" class="cta-mini">Home →</a>
+</header>
+
+<article class="legal">
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated: May 22, 2026 · Effective: May 22, 2026</p>
+
+  <p>
+    Chess Shield is built and operated by Alejandro Treviño Saldaña, an independent developer based in Monterrey, México ("Chess Shield", "we", "us"). This Privacy Policy explains what the Chess Shield iOS app collects, where it lives, and what you can do about it.
+  </p>
+  <p>
+    The short version: <strong>Chess Shield does not collect personal data on a server we control. The vast majority of what the app stores lives only on your iPhone.</strong>
+  </p>
+
+  <h2>1. What stays on your device</h2>
+  <p>The app stores the following locally on your iPhone, using iOS's standard storage (UserDefaults and AsyncStorage). None of this is transmitted to a Chess Shield server:</p>
+  <ul>
+    <li>Your puzzle rating, rating history, and play statistics (puzzles attempted, solved, streaks, per-theme accuracy).</li>
+    <li>Your onboarding answers (chosen entry path, source rating if you provided one).</li>
+    <li>Your shield preferences (which apps you chose to block, unlock-duration mode).</li>
+    <li>App settings (sound/haptics/coach-hint preferences).</li>
+  </ul>
+  <p>This data is wiped if you uninstall the app.</p>
+
+  <h2>2. What Apple handles, not us</h2>
+  <p>Several things appear inside the app but are actually handled by Apple's frameworks. We never see them:</p>
+  <ul>
+    <li><strong>Which apps you block.</strong> Apple's Family Controls API returns opaque tokens that represent your selection. We can store and re-apply those tokens, but we cannot read which apps they represent on the main app side. Apple deliberately keeps that private.</li>
+    <li><strong>Your subscription purchase.</strong> If you subscribe to Chess Shield Pro, Apple's StoreKit processes the payment and tells the app whether you have an active entitlement. We never see your payment method, Apple ID, billing address, or transaction details beyond the entitlement status.</li>
+    <li><strong>Notifications.</strong> Local notifications scheduled by the app (e.g. "Tap to solve a puzzle and unlock the app") are managed by iOS and do not leave your device.</li>
+  </ul>
+
+  <h2>3. What we don't do</h2>
+  <ul>
+    <li>We don't run third-party analytics (no Mixpanel, Amplitude, Firebase Analytics, Segment, etc.).</li>
+    <li>We don't run third-party advertising or tracking SDKs.</li>
+    <li>We don't share or sell your data, because there is no data to share.</li>
+    <li>We don't have a backend account system. You don't have a Chess Shield login.</li>
+    <li>We don't read or monitor the content of your messages, browsing, or activity inside the apps you block. Family Controls only tells us "the user tried to open a blocked app", never what they were doing in it.</li>
+  </ul>
+
+  <h2>4. Crash reports &amp; system diagnostics</h2>
+  <p>
+    If you have "Share With App Developers" enabled in iOS Settings → Privacy &amp; Security → Analytics &amp; Improvements, Apple may share anonymized crash reports with us through App Store Connect. These contain stack traces and device model — not your data. You can disable this at any time in iOS Settings.
+  </p>
+
+  <h2>5. Children</h2>
+  <p>
+    Chess Shield is intended for users aged 4 and up per Apple's age rating, but the app is not directed at children under 13 and does not knowingly collect personal information from them. If a parent installs Chess Shield on a child's device, all of the same privacy properties above apply: the data lives on the device, not on our servers.
+  </p>
+
+  <h2>6. International users</h2>
+  <p>
+    Chess Shield is currently distributed in 148 countries via the Apple App Store, excluding the European Union for v1 (this may change in the future). Because we do not collect or transmit personal data from the app, GDPR data-subject rights (access, deletion, rectification, portability) are satisfied by uninstalling the app, which wipes all data stored locally.
+  </p>
+
+  <h2>7. Changes</h2>
+  <p>
+    If we change this policy materially, we'll update the "Last updated" date and, when feasible, surface a notice in-app. Continued use after a change constitutes acceptance.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>
+    Privacy questions: <a href="mailto:hello@chessshield.com">hello@chessshield.com</a>.<br />
+    Support: <a href="mailto:support@chessshield.com">support@chessshield.com</a>.
+  </p>
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="knight">♞</span> Chess Shield<sup>®</sup></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:hello@chessshield.com">hello@chessshield.com</a>
+    </nav>
+    <p class="footnote">© 2026 Chess Shield. Built in Monterrey, México.</p>
+  </div>
+</footer>
+</body>
+</html>
