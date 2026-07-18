@@ -21,17 +21,17 @@
 
 <article class="legal">
   <h1>Privacy Policy</h1>
-  <p class="meta">Last updated: May 22, 2026 · Effective: May 22, 2026</p>
+  <p class="meta">Last updated: July 15, 2026 · Effective: July 15, 2026</p>
 
   <p>
-    Chess Shield is built and operated by Alejandro Treviño Saldaña, an independent developer based in Monterrey, México ("Chess Shield", "we", "us"). This Privacy Policy explains what the Chess Shield iOS app collects, where it lives, and what you can do about it.
+    Chess Shield is built and operated by Alejandro Treviño Saldaña, an independent developer based in Monterrey, México ("Chess Shield", "we", "us"). This Privacy Policy explains what the Chess Shield app collects, where it lives, and what you can do about it. It covers both the iOS and the Android app; where the two platforms genuinely differ, that is called out explicitly.
   </p>
   <p>
-    The short version: <strong>Chess Shield does not collect personal data on a server we control. The vast majority of what the app stores lives only on your iPhone.</strong>
+    The short version: <strong>Chess Shield does not collect personal data on a server we control. There is no Chess Shield backend. What the app stores lives only on your phone.</strong>
   </p>
 
   <h2>1. What stays on your device</h2>
-  <p>The app stores the following locally on your iPhone, using iOS's standard storage (UserDefaults and AsyncStorage). None of this is transmitted to a Chess Shield server:</p>
+  <p>The app stores the following locally on your phone, using the platform's standard storage (UserDefaults / AsyncStorage on iOS, SharedPreferences / AsyncStorage on Android). None of this is transmitted to a Chess Shield server:</p>
   <ul>
     <li>Your puzzle rating, rating history, and play statistics (puzzles attempted, solved, streaks, per-theme accuracy).</li>
     <li>Your onboarding answers (chosen entry path, source rating if you provided one).</li>
@@ -40,12 +40,28 @@
   </ul>
   <p>This data is wiped if you uninstall the app.</p>
 
-  <h2>2. What Apple handles, not us</h2>
-  <p>Several things appear inside the app but are actually handled by Apple's frameworks. We never see them:</p>
+  <h2>2. What the platform handles, not us</h2>
+  <p>Several things appear inside the app but are actually handled by Apple's or Google's frameworks. We never see them:</p>
   <ul>
-    <li><strong>Which apps you block.</strong> Apple's Family Controls API returns opaque tokens that represent your selection. We can store and re-apply those tokens, but we cannot read which apps they represent on the main app side. Apple deliberately keeps that private.</li>
-    <li><strong>Your subscription purchase.</strong> If you subscribe to Chess Shield Pro, Apple's StoreKit processes the payment and tells the app whether you have an active entitlement. We never see your payment method, Apple ID, billing address, or transaction details beyond the entitlement status.</li>
-    <li><strong>Notifications.</strong> Local notifications scheduled by the app (e.g. "Tap to solve a puzzle and unlock the app") are managed by iOS and do not leave your device.</li>
+    <li><strong>Which apps you block (iOS).</strong> Apple's Family Controls API returns opaque tokens that represent your selection. We can store and re-apply those tokens, but we cannot read which apps they represent on the main app side. Apple deliberately keeps that private.</li>
+    <li><strong>Your subscription purchase.</strong> If you subscribe to Chess Shield Pro, the payment is processed by Apple's StoreKit or Google Play Billing, which tells the app only whether you have an active entitlement. We never see your payment method, your Apple or Google account, your billing address, or transaction details beyond that entitlement status.</li>
+    <li><strong>Notifications.</strong> Local notifications scheduled by the app (for example, a warning that your phone switched the shield off) are managed by your operating system and do not leave your device.</li>
+  </ul>
+
+  <h2>2b. Android specifics</h2>
+  <p>
+    Android has no equivalent of Apple's Family Controls, so the Android app works differently in two ways that we want to state plainly rather than let you assume iOS's behavior applies.
+  </p>
+  <ul>
+    <li>
+      <strong>On Android, we do see which apps you chose to block.</strong> To show you a picker, the app reads the list of apps installed on your device, and it stores the package names of the ones you select. This is read and stored <em>on your device only</em> — it is never transmitted anywhere, because there is nowhere for it to go: the app has no backend. (On iOS this isn't possible even in principle; the tokens are opaque. On Android it is possible, and we do it, because it's the only way to build the picker.)
+    </li>
+    <li>
+      <strong>The Accessibility permission.</strong> The Android app asks you to enable an Accessibility Service. It is used for exactly one purpose: to detect that an app you chose to block has come to the foreground, so the puzzle can be shown. It reads only the package name of that app. It does not read the content of your screen, does not capture what you type, and sends nothing anywhere. This is enforced technically as well as by policy: the service is declared with <code>canRetrieveWindowContent="false"</code>, so Android does not give it screen contents at all. You can revoke it at any time in your phone's Accessibility settings, and turn the shield off in Chess Shield's own Settings.
+    </li>
+    <li>
+      <strong>Usage access.</strong> The app reads Android's usage statistics for two related purposes: so that timed sessions charge you for time you actually spent inside a blocked app rather than time on the lock screen, and to confirm which app is in the foreground when the Accessibility Service has not just reported it (for example right after you unlock the phone). This is read on-device, in the moment, and is not stored or transmitted.
+    </li>
   </ul>
 
   <h2>3. What we don't do</h2>
@@ -54,22 +70,22 @@
     <li>We don't run third-party advertising or tracking SDKs.</li>
     <li>We don't share or sell your data, because there is no data to share.</li>
     <li>We don't have a backend account system. You don't have a Chess Shield login.</li>
-    <li>We don't read or monitor the content of your messages, browsing, or activity inside the apps you block. Family Controls only tells us "the user tried to open a blocked app", never what they were doing in it.</li>
+    <li>We don't read or monitor the content of your messages, browsing, or activity inside the apps you block. Both platforms only ever tell us "the user opened a blocked app", never what they were doing in it.</li>
   </ul>
 
   <h2>4. Crash reports &amp; system diagnostics</h2>
   <p>
-    If you have "Share With App Developers" enabled in iOS Settings → Privacy &amp; Security → Analytics &amp; Improvements, Apple may share anonymized crash reports with us through App Store Connect. These contain stack traces and device model — not your data. You can disable this at any time in iOS Settings.
+    If you have "Share With App Developers" enabled in iOS Settings → Privacy &amp; Security → Analytics &amp; Improvements, Apple may share anonymized crash reports with us through App Store Connect. On Android, if you have usage &amp; diagnostics sharing enabled, Google may share anonymized crash reports with us through the Play Console. In both cases these contain stack traces and device model — not your data — and you can disable the sharing in your phone's settings.
   </p>
 
   <h2>5. Children</h2>
   <p>
-    Chess Shield is intended for users aged 4 and up per Apple's age rating, but the app is not directed at children under 13 and does not knowingly collect personal information from them. If a parent installs Chess Shield on a child's device, all of the same privacy properties above apply: the data lives on the device, not on our servers.
+    Chess Shield carries a 4+ age rating on the App Store and an equivalent all-ages rating on Google Play, but the app is not directed at children under 13 and does not knowingly collect personal information from them. If a parent installs Chess Shield on a child's device, all of the same privacy properties above apply: the data lives on the device, not on our servers.
   </p>
 
   <h2>6. International users</h2>
   <p>
-    Chess Shield is currently distributed in 148 countries via the Apple App Store, excluding the European Union for v1 (this may change in the future). Because we do not collect or transmit personal data from the app, GDPR data-subject rights (access, deletion, rectification, portability) are satisfied by uninstalling the app, which wipes all data stored locally.
+    Chess Shield is distributed through the Apple App Store and Google Play, excluding the European Union for v1 (this may change in the future). Because we do not collect or transmit personal data from the app, GDPR data-subject rights (access, deletion, rectification, portability) are satisfied by uninstalling the app, which wipes all data stored locally.
   </p>
 
   <h2>7. Changes</h2>
