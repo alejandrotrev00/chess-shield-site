@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chess Shield for Android</title>
+<meta name="description" content="Chess Shield is coming to Android. Join the waitlist and be the first to know when it lands on Google Play." />
+<meta name="theme-color" content="#F0EDE3" />
+
+<meta property="og:title" content="Chess Shield for Android" />
+<meta property="og:description" content="The Android version is almost here. Join the waitlist and be the first to know when it lands on Google Play." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chessshield.com/android" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="icon" href="/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="brand">
+  <a href="/" class="brandmark">
+    <span class="knight">♞</span>
+    <span class="wordmark">Chess Shield<sup>®</sup></span>
+  </a>
+  <a href="/" class="cta-mini">Back to home</a>
+</header>
+
+<main>
+  <section class="hero waitlist-hero">
+    <p class="eyebrow">For Android</p>
+    <h1>Chess Shield is coming to Android.</h1>
+    <p class="lede">
+      Thank you for your interest in the Android version. It's in the final weeks of development and should be ready by mid-August.
+    </p>
+
+    <div class="waitlist-card">
+      <h3>Be the first to know</h3>
+      <p class="waitlist-sub">Leave your email and we'll send you a note the moment Chess Shield is live on Google Play.</p>
+
+      <form id="waitlist-form" novalidate>
+        <div class="waitlist-row">
+          <input
+            id="waitlist-email"
+            type="email"
+            name="email"
+            inputmode="email"
+            autocomplete="email"
+            placeholder="you@email.com"
+            required
+          />
+          <button type="submit" id="waitlist-btn" class="cta-primary">Notify me</button>
+        </div>
+        <input type="text" name="website" id="waitlist-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <p id="waitlist-msg" role="status"></p>
+      </form>
+
+      <p class="waitlist-disclaimer">
+        We'll only use your email to tell you when the Android version launches. No newsletters, no promotions, nothing else.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="knight">♞</span> Chess Shield<sup>®</sup>
+    </div>
+    <nav>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:hello@chessshield.com">hello@chessshield.com</a>
+      <a href="mailto:support@chessshield.com">Support</a>
+    </nav>
+    <p class="footnote">© 2026 Chess Shield. Built in Monterrey, México.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var SUPABASE_URL = "https://fdcncihmrbhafcyqgysp.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_YHrhJwQeD06BjSwt-IzOwA_fPnNWzi8";
+
+  var form = document.getElementById("waitlist-form");
+  var emailInput = document.getElementById("waitlist-email");
+  var honeypot = document.getElementById("waitlist-hp");
+  var btn = document.getElementById("waitlist-btn");
+  var msg = document.getElementById("waitlist-msg");
+
+  function setMessage(text, kind) {
+    msg.textContent = text;
+    msg.className = kind || "";
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Bots fill every field; humans never see this one.
+    if (honeypot.value) return;
+
+    var email = emailInput.value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      setMessage("That doesn't look like a valid email. Mind checking it?", "msg-error");
+      return;
+    }
+
+    btn.disabled = true;
+    setMessage("Adding you to the list…", "");
+
+    fetch(SUPABASE_URL + "/rest/v1/android_waitlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: SUPABASE_KEY,
+        Authorization: "Bearer " + SUPABASE_KEY,
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({ email: email, source: "chessshield.com/android" }),
+    })
+      .then(function (res) {
+        if (res.ok) {
+          form.querySelector(".waitlist-row").style.display = "none";
+          setMessage("You're on the list. We'll email you the moment Chess Shield lands on Google Play.", "msg-success");
+        } else if (res.status === 409) {
+          form.querySelector(".waitlist-row").style.display = "none";
+          setMessage("Looks like you're already on the list. We'll keep you posted.", "msg-success");
+        } else {
+          btn.disabled = false;
+          setMessage("Something went wrong on our end. Please try again in a moment.", "msg-error");
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        setMessage("Couldn't reach the server. Please check your connection and try again.", "msg-error");
+      });
+  });
+})();
+</script>
+</body>
+</html>

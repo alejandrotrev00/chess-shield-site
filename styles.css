@@ -293,6 +293,85 @@ footer nav a:hover { color: var(--brand-green-dark); }
   margin: 12px 0 0;
 }
 
+/* ---- ANDROID WAITLIST ---- */
+.waitlist-hero { padding-bottom: 96px; }
+
+.waitlist-card {
+  background: #FFF;
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
+  padding: 26px;
+  max-width: 560px;
+  margin-top: 40px;
+}
+.waitlist-card h3 { font-size: 19px; margin-bottom: 6px; }
+
+.waitlist-sub {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 18px;
+}
+
+.waitlist-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#waitlist-email {
+  flex: 1 1 220px;
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: -0.005em;
+  color: var(--text-primary);
+  background: var(--cream);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 13px 20px;
+  outline: none;
+  min-width: 0;
+}
+#waitlist-email:focus {
+  border-color: var(--green-border);
+  background: #FFF;
+}
+#waitlist-email::placeholder { color: var(--text-tertiary); }
+
+#waitlist-btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+#waitlist-btn:disabled { opacity: 0.55; cursor: wait; }
+
+#waitlist-hp {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  width: 0;
+  border: 0;
+  padding: 0;
+}
+
+#waitlist-msg {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 12px 2px 0;
+  color: var(--text-secondary);
+  min-height: 0;
+}
+#waitlist-msg:empty { margin: 0; }
+#waitlist-msg.msg-success { color: var(--green-800); }
+#waitlist-msg.msg-error { color: #A03A52; }
+
+.waitlist-disclaimer {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-tertiary);
+  margin: 18px 0 0;
+}
+
 /* ---- LEGAL PAGES ---- */
 .legal {
   max-width: 720px;
