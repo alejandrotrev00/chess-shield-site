@@ -372,6 +372,206 @@ footer nav a:hover { color: var(--brand-green-dark); }
   margin: 18px 0 0;
 }
 
+/* ---- DOWNLOAD PAGE ---- */
+.download-body {
+  min-height: 100svh;
+  position: relative;
+}
+
+/* Ambient piece watermarks (canonical Home pattern) */
+.wm {
+  position: fixed;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text-primary);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.wm-knight {
+  top: -36px;
+  right: -48px;
+  font-size: 210px;
+  opacity: 0.055;
+  transform: rotate(-6deg);
+}
+.wm-bishop {
+  bottom: -30px;
+  left: -36px;
+  font-size: 150px;
+  opacity: 0.045;
+  transform: rotate(13deg);
+}
+
+.download {
+  min-height: 100svh;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: calc(20px + env(safe-area-inset-top)) 28px calc(14px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.download-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18px 0 28px;
+}
+
+.app-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.app-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 19px; /* iOS squircle-ish */
+  box-shadow: 0 10px 26px rgba(39, 80, 10, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.app-name {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.app-name sup {
+  font-size: 0.4em;
+  vertical-align: 14px;
+}
+
+.download-h1 {
+  font-size: clamp(19px, 5.2vw, 24px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-secondary);
+  margin: 0 0 26px;
+  max-width: 340px;
+}
+
+.board-figure {
+  margin: 0 0 30px;
+}
+
+.board-img {
+  display: block;
+  width: 264px;
+  height: 264px;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(39, 80, 10, 0.20), 0 3px 8px rgba(0, 0, 0, 0.07);
+}
+
+.board-figure figcaption {
+  font-size: 12px;
+  letter-spacing: -0.005em;
+  color: var(--text-tertiary);
+  margin-top: 12px;
+}
+
+.appstore-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #111;
+  color: #FFF;
+  border-radius: 15px;
+  padding: 14px 30px 14px 24px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.appstore-badge:hover,
+.appstore-badge:active {
+  color: #FFF;
+  transform: scale(1.03);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.apple-logo {
+  width: 26px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.badge-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.15;
+}
+
+.badge-small {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.badge-big {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.android-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--green-board-light);
+  border: 1px solid var(--green-border);
+  color: var(--green-800);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background 120ms ease;
+}
+.android-chip:hover {
+  background: var(--green-50);
+  color: var(--green-800);
+}
+
+.android-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--brand-green);
+  flex-shrink: 0;
+}
+
+.webview-fallback {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-tertiary);
+  max-width: 300px;
+  margin: 30px 0 0;
+}
+.webview-fallback strong { font-weight: 500; color: var(--text-secondary); }
+
+.download-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+.download-footer nav {
+  display: flex;
+  gap: 18px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.download-footer nav a:hover { color: var(--brand-green-dark); }
+
 /* ---- LEGAL PAGES ---- */
 .legal {
   max-width: 720px;
